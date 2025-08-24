@@ -1,15 +1,16 @@
 #!/bin/sh
 # =========================================
-# Alpine Linux 一键修改主机名脚本
+# Alpine Linux 一键修改主机名脚本（交互式）
 # =========================================
 
-# 检查是否输入了新主机名
-if [ -z "$1" ]; then
-    echo "用法: $0 新主机名"
+echo "请输入新的主机名:"
+read -r NEW_HOSTNAME
+
+# 检查是否输入为空
+if [ -z "$NEW_HOSTNAME" ]; then
+    echo "[ERROR] 主机名不能为空！"
     exit 1
 fi
-
-NEW_HOSTNAME="$1"
 
 # 1. 临时修改
 echo "[INFO] 临时修改主机名为: $NEW_HOSTNAME"
