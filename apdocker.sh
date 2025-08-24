@@ -123,7 +123,6 @@ restart_docker() {
 
 # ================== 容器管理 ==================
 container_menu() {
-    clear
     echo -e "${GREEN}===== 容器管理 =====${RESET}"
     echo -e "${GREEN}1) 查看所有容器${RESET}"
     echo -e "${GREEN}2) 启动容器${RESET}"
@@ -133,10 +132,37 @@ container_menu() {
     printf "${GREEN}请选择: ${RESET}"
     read c_choice
     case $c_choice in
-        1) docker ps -a; pause ;;
-        2) read -p "请输入容器名称或ID: " cid; docker start "$cid"; pause ;;
-        3) read -p "请输入容器名称或ID: " cid; docker stop "$cid"; pause ;;
-        4) read -p "请输入容器名称或ID: " cid; docker rm "$cid"; pause ;;
+        1)
+            docker ps -a
+            pause
+            ;;
+        2)
+            echo -e "${GREEN}当前容器列表:${RESET}"
+            docker ps -a
+            echo
+            read -p "请输入容器名称或ID: " cid
+            docker start "$cid"
+            info "容器 $cid 已启动"
+            pause
+            ;;
+        3)
+            echo -e "${GREEN}当前容器列表:${RESET}"
+            docker ps -a
+            echo
+            read -p "请输入容器名称或ID: " cid
+            docker stop "$cid"
+            info "容器 $cid 已停止"
+            pause
+            ;;
+        4)
+            echo -e "${GREEN}当前容器列表:${RESET}"
+            docker ps -a
+            echo
+            read -p "请输入容器名称或ID: " cid
+            docker rm "$cid"
+            info "容器 $cid 已删除"
+            pause
+            ;;
         0) return ;;
         *) warn "无效选项"; pause ;;
     esac
@@ -145,7 +171,6 @@ container_menu() {
 
 # ================== 镜像管理 ==================
 image_menu() {
-    clear
     echo -e "${GREEN}===== 镜像管理 =====${RESET}"
     echo -e "${GREEN}1) 查看镜像列表${RESET}"
     echo -e "${GREEN}2) 拉取镜像${RESET}"
@@ -154,9 +179,25 @@ image_menu() {
     printf "${GREEN}请选择: ${RESET}"
     read i_choice
     case $i_choice in
-        1) docker images; pause ;;
-        2) read -p "请输入镜像名称: " img; docker pull "$img"; pause ;;
-        3) read -p "请输入镜像ID或名称: " img; docker rmi "$img"; pause ;;
+        1)
+            docker images
+            pause
+            ;;
+        2)
+            read -p "请输入镜像名称: " img
+            docker pull "$img"
+            info "镜像 $img 已拉取"
+            pause
+            ;;
+        3)
+            echo -e "${GREEN}当前镜像列表:${RESET}"
+            docker images
+            echo
+            read -p "请输入镜像ID或名称: " img
+            docker rmi "$img"
+            info "镜像 $img 已删除"
+            pause
+            ;;
         0) return ;;
         *) warn "无效选项"; pause ;;
     esac
@@ -168,7 +209,6 @@ ipv6_menu() {
     IPV6_STATUS=$(cat /proc/sys/net/ipv6/conf/all/disable_ipv6)
     CURRENT_STATUS=$([ "$IPV6_STATUS" -eq 0 ] && echo "启用" || echo "禁用")
 
-    clear
     echo -e "${GREEN}===== IPv6 设置 =====${RESET}"
     echo -e "${GREEN}当前 IPv6 状态: ${CURRENT_STATUS}${RESET}"
     echo -e "${GREEN}1) 启用 IPv6（临时 + 永久）${RESET}"
@@ -207,7 +247,6 @@ ipv6_menu() {
 
 # ================== 一键清理 ==================
 cleanup_docker() {
-    clear
     echo -e "${GREEN}===== Docker 清理 =====${RESET}"
     echo -e "${YELLOW}1) 删除停止的容器${RESET}"
     echo -e "${YELLOW}2) 删除悬挂镜像（dangling images）${RESET}"
@@ -245,7 +284,6 @@ cleanup_docker() {
 
 # ================== 主菜单 ==================
 show_menu() {
-    clear
     echo -e "${GREEN}==============================${RESET}"
     echo -e "${GREEN}  Alpine Docker 管理脚本${RESET}"
     echo -e "${GREEN}==============================${RESET}"
@@ -259,7 +297,6 @@ show_menu() {
     echo -e "${GREEN}8) IPv6 开关${RESET}"
     echo -e "${GREEN}9) Docker 清理${RESET}"
     echo -e "${GREEN}0) 退出${RESET}"
-    echo -e "${GREEN}==============================${RESET}"
     printf "${GREEN}请选择: ${RESET}"
     read choice
     case $choice in
