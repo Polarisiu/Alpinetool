@@ -15,7 +15,7 @@ menu() {
     echo -e "${GREEN}6) Alpine 修改中文${RESET}"
     echo -e "${GREEN}7) Alpine 修改主机名${RESET}"
     echo -e "${GREEN}8) Alpine Docker${RESET}"
-    echo -e "${GREEN}9) Alpine Hysteria2)${RESET}"
+    echo -e "${GREEN}9) Alpine Hysteria2${RESET}"
     echo -e "${GREEN}0) 退出${RESET}"
     echo
     read -p $'\033[32m请选择操作 (0-8): \033[0m' choice
