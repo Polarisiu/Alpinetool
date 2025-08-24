@@ -141,8 +141,12 @@ container_menu() {
             docker ps -a
             echo
             read -p "请输入容器名称或ID: " cid
-            docker start "$cid"
-            info "容器 $cid 已启动"
+            if [ -z "$cid" ]; then
+                warn "容器名称或ID不能为空"
+            else
+                docker start "$cid"
+                info "容器 $cid 已启动"
+            fi
             pause
             ;;
         3)
@@ -150,8 +154,12 @@ container_menu() {
             docker ps -a
             echo
             read -p "请输入容器名称或ID: " cid
-            docker stop "$cid"
-            info "容器 $cid 已停止"
+            if [ -z "$cid" ]; then
+                warn "容器名称或ID不能为空"
+            else
+                docker stop "$cid"
+                info "容器 $cid 已停止"
+            fi
             pause
             ;;
         4)
@@ -159,8 +167,12 @@ container_menu() {
             docker ps -a
             echo
             read -p "请输入容器名称或ID: " cid
-            docker rm "$cid"
-            info "容器 $cid 已删除"
+            if [ -z "$cid" ]; then
+                warn "容器名称或ID不能为空"
+            else
+                docker rm "$cid"
+                info "容器 $cid 已删除"
+            fi
             pause
             ;;
         0) return ;;
@@ -185,8 +197,12 @@ image_menu() {
             ;;
         2)
             read -p "请输入镜像名称: " img
-            docker pull "$img"
-            info "镜像 $img 已拉取"
+            if [ -z "$img" ]; then
+                warn "镜像名称不能为空"
+            else
+                docker pull "$img"
+                info "镜像 $img 已拉取"
+            fi
             pause
             ;;
         3)
@@ -194,8 +210,12 @@ image_menu() {
             docker images
             echo
             read -p "请输入镜像ID或名称: " img
-            docker rmi "$img"
-            info "镜像 $img 已删除"
+            if [ -z "$img" ]; then
+                warn "镜像ID或名称不能为空"
+            else
+                docker rmi "$img"
+                info "镜像 $img 已删除"
+            fi
             pause
             ;;
         0) return ;;
