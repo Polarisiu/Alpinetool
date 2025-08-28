@@ -17,7 +17,7 @@ menu() {
     echo -e "${GREEN}8)  Alpine Docker${RESET}"
     echo -e "${GREEN}9)  Alpine Hysteria2${RESET}"
     echo -e "${GREEN}10) Alpine 3XUI${RESET}"
-    echo -e "${GREEN}0) 退出${RESET}"
+    echo -e "${GREEN}0)  退出${RESET}"
     echo
     read -p $'\033[32m请选择操作 (0-8): \033[0m' choice
     case $choice in
