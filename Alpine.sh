@@ -8,15 +8,16 @@ menu() {
     clear
     echo -e "${GREEN}=== Alpine 系统管理菜单 ===${RESET}"
     echo -e "${GREEN}1)  Alpine 更新${RESET}"
-    echo -e "${GREEN}2)  Alpine 防火墙管理${RESET}"
-    echo -e "${GREEN}3)  Alpine Fail2Ban${RESET}"
-    echo -e "${GREEN}4)  Alpine 换源${RESET}"
-    echo -e "${GREEN}5)  Alpine 清理${RESET}"
-    echo -e "${GREEN}6)  Alpine 修改中文${RESET}"
-    echo -e "${GREEN}7)  Alpine 修改主机名${RESET}"
-    echo -e "${GREEN}8)  Alpine Docker${RESET}"
-    echo -e "${GREEN}9)  Alpine Hysteria2${RESET}"
-    echo -e "${GREEN}10) Alpine 3XUI${RESET}"
+    echo -e "${GREEN}2)  Alpine 修改SSH端口${RESET}"
+    echo -e "${GREEN}3)  Alpine 防火墙管理${RESET}"
+    echo -e "${GREEN}4)  Alpine Fail2Ban${RESET}"
+    echo -e "${GREEN}5)  Alpine 换源${RESET}"
+    echo -e "${GREEN}6)  Alpine 清理${RESET}"
+    echo -e "${GREEN}7)  Alpine 修改中文${RESET}"
+    echo -e "${GREEN}8)  Alpine 修改主机名${RESET}"
+    echo -e "${GREEN}9)  Alpine Docker${RESET}"
+    echo -e "${GREEN}10) Alpine Hysteria2${RESET}"
+    echo -e "${GREEN}11) Alpine 3XUI${RESET}"
     echo -e "${GREEN}0)  退出${RESET}"
     echo
     read -p $'\033[32m请选择操作 (0-8): \033[0m' choice
@@ -25,40 +26,46 @@ menu() {
             apk update && apk add --no-cache bash curl wget vim tar sudo git
             pause
             ;;
+
         2)
+            abash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu/Alpinetool/main/apsdk.sh)
+            pause
+            ;;
+
+        3)
             bash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu/Alpinetool/main/apfeew.sh)
             pause
             ;;
         
-        3)
+        4)
             bash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu/Alpinetool/main/apFail2Ban.sh)
             pause
             ;;
-        4)
+        5)
             bash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu/Alpinetool/main/aphuanyuan.sh)
             pause
             ;;
-        5)
+        6)
             bash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu/Alpinetool/main/apql.sh)
             pause
             ;;
-        6)
+        7)
             bash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu/Alpinetool/main/apcn.sh)
             pause
             ;;
-        7)
+        8)
             bash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu/Alpinetool/main/aphome.sh)
             pause
             ;;
-        8)
+        9)
             bash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu/Alpinetool/main/apdocker.sh)
             pause
             ;;
-        9)
+        10)
             bash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu//proxy/main/aphy2.sh)
             pause
             ;;
-        10)
+        11)
             bash <(curl -sL https://raw.githubusercontent.com/Polarisiu/proxy/main/3xuiAlpine.sh)
             pause
             ;;
