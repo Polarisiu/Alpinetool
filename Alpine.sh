@@ -28,7 +28,7 @@ menu() {
             ;;
 
         2)
-            abash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu/Alpinetool/main/apsdk.sh)
+            bash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu/Alpinetool/main/apsdk.sh)
             pause
             ;;
 
