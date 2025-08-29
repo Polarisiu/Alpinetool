@@ -6,6 +6,12 @@ RED="\033[31m"
 YELLOW="\033[33m"
 RESET="\033[0m"
 
+LOG_PATH="/var/log/auth.log"
+
+info() { echo -e "${GREEN}[INFO] $1${RESET}"; }
+warn() { echo -e "${YELLOW}[WARN] $1${RESET}"; }
+error() { echo -e "${RED}[ERROR] $1${RESET}"; }
+
 # -------------------------
 # 检查系统
 # -------------------------
@@ -14,15 +20,13 @@ if [[ ! -f /etc/alpine-release ]]; then
     exit 1
 fi
 
-LOG_PATH="/var/log/auth.log"
-
 # -------------------------
 # 安装 Fail2Ban
 # -------------------------
 install_fail2ban() {
-    echo -e "${GREEN}更新apk索引并安装 fail2ban 和 rsyslog...${RESET}"
+    info "更新 apk 索引并安装 fail2ban 和 rsyslog..."
     apk update
-    apk add fail2ban rsyslog openssh
+    apk add --no-cache fail2ban rsyslog openssh
 
     rc-update add rsyslog
     service rsyslog start
@@ -43,7 +47,15 @@ install_fail2ban() {
         service sshd restart
     fi
 
-    echo -e "${GREEN}✅ Fail2Ban 已安装并启动${RESET}"
+    # 创建兼容 Alpine 的 filter
+    mkdir -p /etc/fail2ban/filter.d
+    cat >/etc/fail2ban/filter.d/sshd-alpine.conf <<'EOF'
+[Definition]
+failregex = ^.*Failed password for .* from <HOST> port .* ssh2$
+ignoreregex =
+EOF
+
+    info "✅ Fail2Ban 已安装并启动"
 }
 
 # -------------------------
@@ -64,25 +76,27 @@ configure_ssh() {
 [sshd]
 enabled = true
 port = $SSH_PORT
-filter = sshd
+filter = sshd-alpine
 logpath = $LOG_PATH
 maxretry = $MAX_RETRY
 bantime  = $BAN_TIME
 EOF
 
     service fail2ban restart
-    echo -e "${GREEN}✅ SSH 防暴力破解配置完成${RESET}"
+    info "✅ SSH 防暴力破解配置完成"
+    read -p $'\033[32m按回车返回菜单...\033[0m'
 }
 
 # -------------------------
 # 卸载 Fail2Ban
 # -------------------------
 uninstall_fail2ban() {
-    echo -e "${GREEN}正在卸载 Fail2Ban...${RESET}"
+    info "正在卸载 Fail2Ban..."
     service fail2ban stop || true
     apk del fail2ban rsyslog
     [[ -f /etc/ssh/sshd_config ]] && sed -i '/SyslogFacility AUTH/d;/LogLevel INFO/d' /etc/ssh/sshd_config
-    echo -e "${GREEN}✅ Fail2Ban 已卸载${RESET}"
+    info "✅ Fail2Ban 已卸载"
+    read -p $'\033[32m按回车返回菜单...\033[0m'
 }
 
 # -------------------------
@@ -122,8 +136,8 @@ monitor_log() {
         trap - SIGINT
     else
         echo -e "${RED}日志文件不存在${RESET}"
+        read -p $'\033[32m按回车返回菜单...\033[0m'
     fi
-    read -p $'\033[32m按回车返回菜单...\033[0m'
 }
 
 # -------------------------
@@ -148,7 +162,6 @@ while true; do
         1)
             install_fail2ban
             configure_ssh
-            read -p $'\033[32m按回车返回菜单...\033[0m'
             ;;
         2)
             configure_ssh
@@ -161,10 +174,10 @@ while true; do
             ;;
         5)
             monitor_log
+            read -p $'\033[32m按回车返回菜单...\033[0m'
             ;;
         6)
             uninstall_fail2ban
-            read -p $'\033[32m按回车返回菜单...\033[0m'
             ;;
         0)
             break
