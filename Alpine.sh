@@ -32,7 +32,7 @@ remove_alias() {
 
 # ---------- 下载主脚本 ----------
 if [ ! -f "$SCRIPT_PATH" ]; then
-    printf "${GREEN}ℹ️ 正在下载主菜单脚本...${RESET}\n"
+    printf "${GREEN}正在下载主菜单脚本...${RESET}\n"
     curl -sL "$SCRIPT_URL" -o "$SCRIPT_PATH"
     chmod +x "$SCRIPT_PATH"
 fi
@@ -59,7 +59,7 @@ menu() {
     clear
     # 首次运行提示
     if [ ! -f "$FLAG_FILE" ]; then
-        printf "${GREEN}✅ 已创建快捷别名：A 和 a，并立即生效${RESET}\n\n"
+        printf "${GREEN}✅ 已创建快捷别名：A 和 a,重启终端生效${RESET}\n\n"
         touch "$FLAG_FILE"
     fi
     printf "${GREEN}=== 系统管理菜单 ===${RESET}\n"
