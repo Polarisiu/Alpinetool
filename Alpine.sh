@@ -79,7 +79,7 @@ menu() {
     printf "${GREEN}[14] 更新脚本${RESET}\n"
     printf "${GREEN}[15] 卸载脚本${RESET}\n"
     printf "${GREEN}[0]  退出${RESET}\n\n"
-    printf "${GREEN}请选择操作: ${RESET}\n\n"
+    printf "${GREEN}请选择操作: ${RESET}"
     read choice
     case "$choice" in
         1) apk update && apk add --no-cache bash curl wget vim tar sudo git 2>/dev/null \
@@ -97,16 +97,14 @@ menu() {
         11) bash <(curl -sL  https://raw.githubusercontent.com/Polarisiu/proxy/main/3xuiAlpine.sh) ;;
         12) bash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu/proxy/main/proxy.sh) ;;
         13) bash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu/app-store/main/store.sh) ;;
-        14) 
-            printf "${GREEN}ℹ️ 正在下载最新版本脚本...${RESET}\n"
+        14) printf "${GREEN}正在下载最新版本脚本...${RESET}\n"
             curl -sL "$SCRIPT_URL" -o "$SCRIPT_PATH"
             chmod +x "$SCRIPT_PATH"
             printf "${GREEN}✅ 脚本已更新完成，正在重新启动菜单...${RESET}\n"
             sh "$SCRIPT_PATH"
             exit 0
             ;;
-        15)
-            printf "${GREEN}ℹ️ 正在删除别名和脚本...${RESET}\n"
+        15) printf "${GREEN}正在删除别名和脚本...${RESET}\n"
             for f in ~/.bashrc ~/.bash_profile ~/.profile ~/.ashrc; do
                 remove_alias "$f"
             done
@@ -115,7 +113,7 @@ menu() {
             exit 0
             ;;
         0) exit 0 ;;
-        *) printf "${RED}⚠️ 无效选择，请重新输入${RESET}\n" ;;
+        *) printf "${RED}无效选择，请重新输入${RESET}\n" ;;
     esac
     printf "${RED}按回车键返回菜单...${RESET}\n"
     read
