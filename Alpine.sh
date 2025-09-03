@@ -9,7 +9,7 @@ RED="\033[31m"
 RESET="\033[0m"
 
 SCRIPT_PATH="/root/alpine.sh"
-SCRIPT_URL="https://raw.githubusercontent.com/iu683/uu/main/aaqd.sh"
+SCRIPT_URL="https://raw.githubusercontent.com/iu683/uu/main/Alpine.sh"
 ALIAS_SCRIPT="/root/alpine_alias.sh"
 FLAG_FILE="$HOME/.alpine_alias_created"
 
