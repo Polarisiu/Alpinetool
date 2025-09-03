@@ -62,7 +62,6 @@ menu() {
         printf "${GREEN}✅ 已创建快捷别名：A 和 a，并立即生效${RESET}\n\n"
         touch "$FLAG_FILE"
     fi
-
     printf "${GREEN}=== 系统管理菜单 ===${RESET}\n"
     printf "${GREEN}[01] 系统更新${RESET}\n"
     printf "${GREEN}[02] 修改SSH端口${RESET}\n"
