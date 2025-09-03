@@ -80,10 +80,8 @@ menu() {
     printf "${GREEN}[14] 更新脚本${RESET}\n"
     printf "${GREEN}[15] 卸载脚本${RESET}\n"
     printf "${GREEN}[0]  退出${RESET}\n\n"
-
     printf "${GREEN}请选择操作: ${RESET}\n\n"
     read choice
-
     case "$choice" in
         1) apk update && apk add --no-cache bash curl wget vim tar sudo git 2>/dev/null \
               || (apt update && apt install -y curl wget vim tar sudo git) \
@@ -120,8 +118,7 @@ menu() {
         0) exit 0 ;;
         *) printf "${RED}⚠️ 无效选择，请重新输入${RESET}\n" ;;
     esac
-
-    printf "按回车键返回菜单..."
+    printf "${RED}按回车键返回菜单...${RESET}\n"
     read
     menu
 }
