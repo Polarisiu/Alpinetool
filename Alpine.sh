@@ -34,7 +34,7 @@ fi
 
 # ================== 菜单函数 ==================
 menu() {
-    echo -e "${GREEN}=== 系统管理菜单 ===${RESET}"
+    echo -e "${GREEN}===  Alpine系统管理菜单 ===${RESET}"
     echo -e "${GREEN}[01] 系统更新${RESET}"
     echo -e "${GREEN}[02] 修改SSH端口${RESET}"
     echo -e "${GREEN}[03] 防火墙管理${RESET}"
