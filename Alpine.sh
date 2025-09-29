@@ -34,7 +34,6 @@ fi
 
 # ================== 菜单函数 ==================
 menu() {
-    clear
     echo -e "${GREEN}=== 系统管理菜单 ===${RESET}"
     echo -e "${GREEN}[01] 系统更新${RESET}"
     echo -e "${GREEN}[02] 修改SSH端口${RESET}"
@@ -73,7 +72,7 @@ menu() {
         14) echo -e "${GREEN}正在下载最新版本脚本...${RESET}"
             curl -sL "$SCRIPT_URL" -o "$SCRIPT_PATH"
             chmod +x "$SCRIPT_PATH"
-            echo -e "${GREEN}✅ 脚本已更新完成${RESET}" ;;
+            echo -e "${GREEN}✅ 脚本已更新完成,A 或 a 可快速启动${RESET}" ;;
         15) echo -e "${YELLOW}正在卸载脚本...${RESET}"
             rm -f "$SCRIPT_PATH" "$BIN_LINK_DIR/A" "$BIN_LINK_DIR/a"
             echo -e "${RED}✅ 卸载完成${RESET}"
@@ -85,6 +84,7 @@ menu() {
     read -rp $'\n\033[33m按回车返回菜单...\033[0m'
     menu
 }
+
 
 # ================== 主循环 ==================
 menu
