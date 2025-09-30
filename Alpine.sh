@@ -48,9 +48,9 @@ menu() {
     echo -e "${GREEN}[11] 3XUI 面板${RESET}"
     echo -e "${GREEN}[12] 代理工具${RESET}"
     echo -e "${GREEN}[13] 应用商店${RESET}"
-    echo -e "${GREEN}[14] 更新脚本${RESET}"
-    echo -e "${GREEN}[15] 卸载脚本${RESET}"
-    echo -e "${GREEN}[0]  退出${RESET}"
+    echo -e "${GREEN}[88] 更新脚本${RESET}"
+    echo -e "${GREEN}[99] 卸载脚本${RESET}"
+    echo -e "${GREEN}[ 0] 退出${RESET}"
     read -rp "$(echo -e "${RED}请输入操作编号: ${RESET}")" choice
 
     case "$choice" in
@@ -69,11 +69,11 @@ menu() {
         11) bash <(curl -sL https://raw.githubusercontent.com/Polarisiu/proxy/main/3xuiAlpine.sh) ;;
         12) bash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu/proxy/main/proxy.sh) ;;
         13) bash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu/app-store/main/store.sh) ;;
-        14) echo -e "${GREEN}正在下载最新版本脚本...${RESET}"
+        88) echo -e "${GREEN}正在下载最新版本脚本...${RESET}"
             curl -sL "$SCRIPT_URL" -o "$SCRIPT_PATH"
             chmod +x "$SCRIPT_PATH"
             echo -e "${GREEN}✅ 脚本已更新完成,A 或 a 可快速启动${RESET}" ;;
-        15) echo -e "${YELLOW}正在卸载脚本...${RESET}"
+        99) echo -e "${YELLOW}正在卸载脚本...${RESET}"
             rm -f "$SCRIPT_PATH" "$BIN_LINK_DIR/A" "$BIN_LINK_DIR/a"
             echo -e "${RED}✅ 卸载完成${RESET}"
             exit 0 ;;
