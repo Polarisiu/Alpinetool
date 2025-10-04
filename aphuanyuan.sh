@@ -105,17 +105,13 @@ show_current_repo() {
 # ================== 主菜单 ==================
 while true; do
     clear
-    echo -e "${GREEN}==============================${RESET}"
-    echo -e "${GREEN} Alpine Linux 更新源切换菜单 ${RESET}"
-    echo -e "=============================="
-    show_current_repo
+    echo -e "${GREEN}======Alpine 更新源切换菜单======${RESET}"
     echo -e "${GREEN}1) 切换到阿里云源并更新缓存${RESET}"
     echo -e "${GREEN}2) 切换到官方源并更新缓存${RESET}"
     echo -e "${GREEN}3) 切换到清华源并更新缓存${RESET}"
     echo -e "${GREEN}4) 备份当前源${RESET}"
     echo -e "${GREEN}5) 还原备份源并更新缓存${RESET}"
     echo -e "${GREEN}0) 退出${RESET}"
-    echo -e "------------------------------"
     read -rp "$(echo -e ${GREEN}请选择操作: ${RESET})" choice
 
     case $choice in
@@ -152,6 +148,5 @@ while true; do
             warn "无效选择，请重新输入"
             ;;
     esac
-    echo
     read -rp "$(echo -e ${YELLOW}按回车返回菜单...${RESET})"
 done
