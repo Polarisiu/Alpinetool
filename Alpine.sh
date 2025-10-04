@@ -48,9 +48,11 @@ menu() {
     echo -e "${GREEN}[11] 3XUI 面板${RESET}"
     echo -e "${GREEN}[12] 代理工具${RESET}"
     echo -e "${GREEN}[13] 应用商店${RESET}"
+    echo -e "${GREEN}-------------------------${RESET}"
     echo -e "${GREEN}[88] 更新脚本${RESET}"
     echo -e "${GREEN}[99] 卸载脚本${RESET}"
     echo -e "${GREEN}[ 0] 退出${RESET}"
+    echo -e "${GREEN}-------------------------${RESET}"
     read -rp "$(echo -e "${RED}请输入操作编号: ${RESET}")" choice
 
     case "$choice" in
