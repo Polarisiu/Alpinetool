@@ -7,8 +7,9 @@
 GREEN="\033[32m"
 YELLOW="\033[33m"
 RED="\033[31m"
+BLUE="\033[34m"
 RESET="\033[0m"
-
+BOLD="\033[1m"
 # ================== 脚本路径 ==================
 SCRIPT_PATH="/root/alpine.sh"
 SCRIPT_URL="https://raw.githubusercontent.com/Polarisiu/Alpinetool/main/Alpine.sh"
@@ -34,27 +35,25 @@ fi
 
 # ================== 菜单函数 ==================
 menu() {
-    echo -e "${GREEN}===  Alpine系统管理菜单 ===${RESET}"
-    echo -e "${GREEN}[01] 系统更新${RESET}"
-    echo -e "${GREEN}[02] 修改SSH端口${RESET}"
-    echo -e "${GREEN}[03] 防火墙管理${RESET}"
-    echo -e "${GREEN}[04] Fail2Ban${RESET}"
-    echo -e "${GREEN}[05] 换源${RESET}"
-    echo -e "${GREEN}[06] 系统清理${RESET}"
-    echo -e "${GREEN}[07] 设置中文${RESET}"
-    echo -e "${GREEN}[08] 修改主机名${RESET}"
-    echo -e "${GREEN}[09] Docker 管理${RESET}"
-    echo -e "${GREEN}[10] Hysteria2${RESET}"
-    echo -e "${GREEN}[11] 3XUI 面板${RESET}"
-    echo -e "${GREEN}[12] 代理工具${RESET}"
-    echo -e "${GREEN}[13] 应用商店${RESET}"
-    echo -e "${GREEN}-------------------------${RESET}"
+    echo -e "${BLUE}===Alpine系统管理菜单===${RESET}"
+    echo -e "${YELLOW}[01] 系统更新${RESET}"
+    echo -e "${YELLOW}[02] 修改 SSH 端口${RESET}"
+    echo -e "${YELLOW}[03] 防火墙管理${RESET}"
+    echo -e "${YELLOW}[04] Fail2Ban${RESET}"
+    echo -e "${YELLOW}[05] 换源${RESET}"
+    echo -e "${YELLOW}[06] 系统清理${RESET}"
+    echo -e "${YELLOW}[07] 设置中文${RESET}"
+    echo -e "${YELLOW}[08] 修改主机名${RESET}"
+    echo -e "${YELLOW}[09] Docker 管理${RESET}"
+    echo -e "${YELLOW}[10] Hysteria2${RESET}"
+    echo -e "${YELLOW}[11] 3XUI 面板${RESET}"
+    echo -e "${YELLOW}[12] 代理工具${RESET}"
+    echo -e "${YELLOW}[13] 应用商店${RESET}"
     echo -e "${GREEN}[88] 更新脚本${RESET}"
     echo -e "${GREEN}[99] 卸载脚本${RESET}"
-    echo -e "${GREEN}[ 0] 退出${RESET}"
-    echo -e "${GREEN}-------------------------${RESET}"
-    read -rp "$(echo -e "${RED}请输入操作编号: ${RESET}")" choice
-
+    echo -e "${GREEN}[00] 退出${RESET}"
+    echo -ne "${RED}请输入操作编号: ${RESET}"
+    read choice
     case "$choice" in
         1) apk update && apk add --no-cache bash curl wget vim tar sudo git 2>/dev/null \
               || (apt update && apt install -y curl wget vim tar sudo git) \
@@ -79,10 +78,9 @@ menu() {
             rm -f "$SCRIPT_PATH" "$BIN_LINK_DIR/A" "$BIN_LINK_DIR/a"
             echo -e "${RED}✅ 卸载完成${RESET}"
             exit 0 ;;
-        0) exit 0 ;;
+        00) exit 0 ;;
         *) echo -e "${RED}无效选择，请重新输入!${RESET}" ;;
     esac
-
     read -rp $'\n\033[33m按回车返回菜单...\033[0m'
     menu
 }
