@@ -275,7 +275,7 @@ menu() {
         echo -e "${GREEN}10) 显示当前规则${RESET}"
         echo -e "${GREEN}11) 设置开机自动恢复防火墙规则${RESET}"
         echo -e "${GREEN} 0) 退出${RESET}"
-        read -r -p "请选择操作 : " choice
+        read -r -p "$(echo -e ${GREEN}请选择操作 : ${RESET})" choice
 
         case $choice in
             1) init_rules ;;
