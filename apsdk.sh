@@ -38,11 +38,11 @@ elif command -v nft >/dev/null 2>&1; then
     nft add rule inet filter input tcp dport "${NEW_PORT}" accept
     echo -e "${GREEN}✅ 已使用 nftables 放行端口 ${NEW_PORT}${RESET}"
 else
-    echo -e "${YELLOW}⚠️ 未检测到防火墙工具，请手动确认端口已放行${RESET}"
+    echo -e "${YELLOW}未检测到防火墙工具，请手动确认端口已放行${RESET}"
 fi
 
 # 重启 sshd (Alpine 用 openrc)
 rc-service sshd restart
 
 echo -e "${GREEN}✅ SSH 端口已修改为: ${NEW_PORT}${RESET}"
-echo -e "${YELLOW}⚠️ 请在新窗口测试 SSH 是否能连接: ssh -p ${NEW_PORT} user@服务器IP${RESET}"
+echo -e "${YELLOW}请在新窗口测试 SSH 是否能连接: ssh -p ${NEW_PORT} user@服务器IP${RESET}"
