@@ -70,11 +70,11 @@ menu() {
         11) bash <(curl -sL https://raw.githubusercontent.com/Polarisiu/proxy/main/3xuiAlpine.sh) ;;
         12) bash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu/proxy/main/proxy.sh) ;;
         13) bash <(curl -fsSL https://raw.githubusercontent.com/Polarisiu/app-store/main/store.sh) ;;
-        88) echo -e "${GREEN}正在下载最新版本脚本...${RESET}"
+        88) 
             curl -sL "$SCRIPT_URL" -o "$SCRIPT_PATH"
             chmod +x "$SCRIPT_PATH"
-            echo -e "${GREEN}✅ 脚本已更新完成,A 或 a 可快速启动${RESET}" ;;
-        99) echo -e "${YELLOW}正在卸载脚本...${RESET}"
+            echo -e "${GREEN}✅ 更新完成,A 或 a 可快速启动${RESET}" ;;
+        99) 
             rm -f "$SCRIPT_PATH" "$BIN_LINK_DIR/A" "$BIN_LINK_DIR/a"
             echo -e "${RED}✅ 卸载完成${RESET}"
             exit 0 ;;
