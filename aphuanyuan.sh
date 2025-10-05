@@ -141,7 +141,6 @@ while true; do
             update_cache
             ;;
         0)
-            info "退出脚本..."
             break
             ;;
         *)
