@@ -78,7 +78,7 @@ menu() {
             rm -f "$SCRIPT_PATH" "$BIN_LINK_DIR/A" "$BIN_LINK_DIR/a"
             echo -e "${RED}✅ 卸载完成${RESET}"
             exit 0 ;;
-        00) exit 0 ;;
+      00|0) exit 0 ;;
         *) echo -e "${RED}无效选择，请重新输入!${RESET}" ;;
     esac
     read -rp $'\n\033[33m按回车返回菜单...\033[0m'
