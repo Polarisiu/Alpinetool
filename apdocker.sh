@@ -115,7 +115,7 @@ container_menu() {
     echo -e "${GREEN}3) 停止容器${RESET}"
     echo -e "${GREEN}4) 删除容器${RESET}"
     echo -e "${GREEN}0) 返回主菜单${RESET}"
-    read -p "请选择: " c_choice
+    read -p "$(echo -e ${GREEN}请选择: ${RESET})" c_choice
     case $c_choice in
         1)
             docker ps -a
