@@ -18,7 +18,6 @@ warn() { echo -e "${YELLOW}[WARN] $1${RESET}"; }
 error() { echo -e "${RED}[ERROR] $1${RESET}"; }
 
 pause() {
-    echo
     read -p "按回车键返回菜单..." dummy
 }
 
@@ -271,7 +270,7 @@ main_menu() {
             9) cleanup_docker ;;
             10) restart_docker ;;
             0) exit 0 ;;
-            *) warn "无效选项"; pause ;;
+            *) warn "无效选择"; pause ;;
         esac
     done
 }
