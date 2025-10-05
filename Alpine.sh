@@ -17,7 +17,7 @@ BIN_LINK_DIR="/usr/local/bin"
 
 # ================== 首次运行自动安装 ==================
 if [ ! -f "$SCRIPT_PATH" ]; then
-    echo -e "${YELLOW}首次运行，正在保存脚本到 $SCRIPT_PATH ...${RESET}"
+    echo -e "${YELLOW}首次运行，安装脚本...${RESET}"
     curl -fsSL -o "$SCRIPT_PATH" "$SCRIPT_URL"
     if [ $? -ne 0 ]; then
         echo -e "${RED}❌ 下载失败，请检查网络或 URL${RESET}"
@@ -35,6 +35,7 @@ fi
 
 # ================== 菜单函数 ==================
 menu() {
+    clear
     echo -e "${BLUE}===Alpine系统管理菜单===${RESET}"
     echo -e "${YELLOW}[01] 系统更新${RESET}"
     echo -e "${YELLOW}[02] 修改SSH端口${RESET}"
