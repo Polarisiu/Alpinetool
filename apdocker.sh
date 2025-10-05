@@ -257,7 +257,7 @@ main_menu() {
         echo -e "${GREEN} 9) 一键清理 Docker${RESET}"
         echo -e "${GREEN}10) 重启 Docker${RESET}"
         echo -e "${GREEN} 0) 退出${RESET}"
-        read -p "$(echo -e ${GREEN}请选择:${RESET}) " choice
+        read -p "$(echo -e ${GREEN}请选择:${RESET})" choice
         case $choice in
             1) install_docker ;;
             2) update_docker ;;
