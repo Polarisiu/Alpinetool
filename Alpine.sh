@@ -81,7 +81,7 @@ menu() {
       00|0) exit 0 ;;
         *) echo -e "${RED}无效选择，请重新输入!${RESET}" ;;
     esac
-    read -rp $'\n\033[33m按回车返回菜单...\033[0m'
+    read -p "$(echo -e ${GREEN}按回车返回菜单...${RESET})"
     menu
 }
 
