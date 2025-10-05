@@ -290,7 +290,7 @@ menu() {
             10) show_rules ;;
             11) enable_autoload ;;
             0) break ;;
-            *) warn "无效输入，请重新选择"; read -r -p "按回车返回菜单..." ;;
+            *) warn "无效输入，请重新选择"; read -r -p "$(echo -e ${GREEN}按回车返回菜单...${RESET})" ;;
         esac
     done
 }
