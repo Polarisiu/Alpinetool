@@ -11,7 +11,7 @@ BLUE="\033[34m"
 RESET="\033[0m"
 BOLD="\033[1m"
 # ================== 脚本路径 ==================
-SCRIPT_PATH="/root/alpine.sh"
+SCRIPT_PATH="/root/Alpine.sh"
 SCRIPT_URL="https://raw.githubusercontent.com/Polarisiu/Alpinetool/main/Alpine.sh"
 BIN_LINK_DIR="/usr/local/bin"
 
