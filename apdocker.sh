@@ -247,7 +247,6 @@ main_menu() {
 
         echo -e "${GREEN}====== Alpine Docker 管理 ======${RESET}"
         echo -e "${YELLOW}Docker: $docker_status | 容器: $running_containers/$total_containers | IPv6: $ipv6_display${RESET}\n"
-
         echo -e "${GREEN} 1) 安装/更新 Docker${RESET}"
         echo -e "${GREEN} 2) 安装/更新 Docker Compose${RESET}"
         echo -e "${GREEN} 3) 卸载 Docker & Compose${RESET}"
@@ -259,7 +258,7 @@ main_menu() {
         echo -e "${GREEN} 9) 一键清理 Docker${RESET}"
         echo -e "${GREEN}10) 重启 Docker${RESET}"
         echo -e "${GREEN} 0) 退出${RESET}"
-        read -p "请选择: " choice
+        read -p "$(echo -e ${GREEN}请选择:${RESET}) " choice
         case $choice in
             1) install_docker ;;
             2) update_docker ;;
