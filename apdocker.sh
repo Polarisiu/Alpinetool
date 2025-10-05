@@ -18,7 +18,7 @@ warn() { echo -e "${YELLOW}[WARN] $1${RESET}"; }
 error() { echo -e "${RED}[ERROR] $1${RESET}"; }
 
 pause() {
-    read -p "按回车键返回菜单..." dummy
+    read -p "$(echo -e ${GREEN}按回车键返回菜单...${RESET})" dummy
 }
 
 root_use() {
