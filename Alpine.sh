@@ -10,6 +10,8 @@ RED="\033[31m"
 BLUE="\033[34m"
 RESET="\033[0m"
 BOLD="\033[1m"
+ORANGE='\033[38;5;208m'
+
 # ================== 脚本路径 ==================
 SCRIPT_PATH="/root/Alpine.sh"
 SCRIPT_URL="https://raw.githubusercontent.com/Polarisiu/Alpinetool/main/Alpine.sh"
@@ -35,7 +37,7 @@ fi
 # ================== 菜单函数 ==================
 menu() {
     clear
-    echo -e "${BLUE}===Alpine系统管理菜单===${RESET}"
+    echo -e "${ORANGE}===Alpine系统管理菜单===${RESET}"
     echo -e "${YELLOW}[01] 系统更新${RESET}"
     echo -e "${YELLOW}[02] 修改SSH端口${RESET}"
     echo -e "${YELLOW}[03] 防火墙管理${RESET}"
@@ -51,7 +53,7 @@ menu() {
     echo -e "${YELLOW}[13] 应用商店${RESET}"
     echo -e "${GREEN}[88] 更新脚本${RESET}"
     echo -e "${GREEN}[99] 卸载脚本${RESET}"
-    echo -e "${GREEN}[00] 退出${RESET}"
+    echo -e "${YELLOW}[00] 退出${RESET}"
     echo -ne "${RED}请输入操作编号: ${RESET}"
     read choice
     case "$choice" in
